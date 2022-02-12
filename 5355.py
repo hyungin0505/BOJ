@@ -12,3 +12,17 @@
 
 # 출력
 # 각 테스트 케이스에 대해서, 화성 수학식의 결과를 계산한 다음에, 소수점 둘째 자리까지 출력한다.
+
+a = int(input()) # 테스트 케이스 개수 설정
+
+for i in  range(a): # 설정한 테스트 케이스 수만큼 반복
+  l = list(map(str, input().split())) # 수식을 문자열로 입력받아 list에 map으로 저장
+  result = eval(l[0]) # 
+  for j in range(len(l)):
+    if l[j] == "@":
+      result = result * 3
+    elif l[j] == "%":
+      result = result + 5
+    elif l[j] == "#":
+      result = result -7
+  print("%0.2f" %result)
