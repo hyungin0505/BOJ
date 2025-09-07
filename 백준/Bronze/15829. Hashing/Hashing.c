@@ -3,9 +3,9 @@
 #include <stdlib.h>
 
 long long power(int num, int pow) {
-    int result = 1;
+    long long result = 1;
 
-    for (int j=0; j<pow; j++) result *= num;
+    for (int j=0; j<pow; j++) result = (result * num) % 1234567891;
 
     return result;
 }
@@ -17,12 +17,13 @@ int main(void) {
 
     scanf("%d", &length);
 
-    string = malloc(sizeof(char)*length);
+    string = malloc(sizeof(char)*(length+1));
     memset(string, 0, length);
     scanf("%s", string);
 
     for (int i=0; i<length; i++) {
-        result += (string[i] - 'a' + 1) * power(31, i);
+        result += ((string[i] - 'a' + 1) * power(31, i))%1234567891;
+        result %= 1234567891;
     }
     printf("%lld", result % 1234567891);
 
